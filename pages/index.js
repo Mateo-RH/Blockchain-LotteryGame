@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import factory from '../ethereum/factory';
 import { Card, Button } from 'semantic-ui-react';
+import Layout from '../components/Layout';
 
 class LotteryIndex extends Component {
   static async getInitialProps() {
@@ -13,7 +14,8 @@ class LotteryIndex extends Component {
       return {
         header: address,
         description: <a>View Lottery</a>,
-        fluid: true
+        fluid: true,
+        style: { overflowWrap: 'break-word' }
       };
     });
 
@@ -22,16 +24,18 @@ class LotteryIndex extends Component {
 
   render() {
     return (
-      <div>
-        <link
-          rel="stylesheet"
-          href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
-        />
-        <h3>Open Lotteries</h3>
-        <br></br>
-        {this.renderLotteries()}
-        <Button content="Create Campaign" icon="add circle" primary />
-      </div>
+      <Layout>
+        <div>
+          <h3>Open Lotteries</h3>
+          <Button
+            content="Create Lottery"
+            icon="add circle"
+            primary
+            floated="right"
+          />
+          {this.renderLotteries()}
+        </div>
+      </Layout>
     );
   }
 }
