@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import factory from '../ethereum/factory';
 import { Card, Button } from 'semantic-ui-react';
 import Layout from '../components/Layout';
+import { Link } from '../routes';
 
 class LotteryIndex extends Component {
   static async getInitialProps() {
@@ -13,7 +14,11 @@ class LotteryIndex extends Component {
     const items = this.props.lotteries.map(address => {
       return {
         header: address,
-        description: <a>View Lottery</a>,
+        description: (
+          <Link route={`/lotteries/${address}`}>
+            <a>View Lottery</a>
+          </Link>
+        ),
         fluid: true,
         style: { overflowWrap: 'break-word' }
       };
@@ -27,12 +32,16 @@ class LotteryIndex extends Component {
       <Layout>
         <div>
           <h3>Open Lotteries</h3>
-          <Button
-            content="Create Lottery"
-            icon="add circle"
-            primary
-            floated="right"
-          />
+          <Link route="/lotteries/new">
+            <a href="">
+              <Button
+                content="Create Lottery"
+                icon="add circle"
+                primary
+                floated="right"
+              />
+            </a>
+          </Link>
           {this.renderLotteries()}
         </div>
       </Layout>

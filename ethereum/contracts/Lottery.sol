@@ -18,6 +18,7 @@ contract Lottery {
     address public manager;
     uint public contribution;
     address[] public players;
+    uint public playersCount;
     
     modifier restricted() {
         require(msg.sender == manager);
@@ -33,6 +34,7 @@ contract Lottery {
         require(msg.value == contribution);
         
         players.push(msg.sender);
+        playersCount++;
     }
     
     function random() private view returns (uint) {
@@ -43,10 +45,22 @@ contract Lottery {
         uint index = random() % players.length;
         players[index].transfer(this.balance);
         players = new address[](0);
+        playersCount = 0;
     }
 
     
     function getPlayers() public view returns (address[]) {
         return players;
+    }
+
+    function getSummary() public view returns (
+        uint, uint, uint, address
+    ) {
+        return (
+            contribution,
+            this.balance,
+            playersCount,
+            manager
+        );
     }
 }

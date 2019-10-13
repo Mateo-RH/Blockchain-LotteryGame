@@ -1,13 +1,13 @@
 import Web3 from 'web3';
 
-// const getProvider = async () => {
-//     await window.web3.currentProvider.enable(); // request authentication
-//   };
-//   getProvider();
 let web3;
 
 if (typeof window !== 'undefined' && typeof window.web3 !== 'undefined') {
   // We are in the browser and metamask is running
+  const getProvider = async () => {
+    await window.web3.currentProvider.enable(); // request authentication
+  };
+  getProvider();
   web3 = new Web3(window.web3.currentProvider);
 } else {
   // We are on the server *OR* the user is not running metamask
