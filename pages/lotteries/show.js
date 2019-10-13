@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Layout from '../../components/Layout';
 import Lottery from '../../ethereum/lottery';
-import { Card, Grid, Button, Form } from 'semantic-ui-react';
+import { Card, Grid, Button, Form, Message } from 'semantic-ui-react';
 import web3 from '../../ethereum/web3';
 import ContributeForm from '../../components/ContributeForm';
 
@@ -77,7 +77,7 @@ class LotteryShow extends Component {
   render() {
     return (
       <Layout>
-        <h3>Lottery Show</h3>
+        <h3>Lottery Summary</h3>
         <Grid>
           <Grid.Row>
             <Grid.Column width={10}>{this.renderCards()}</Grid.Column>
@@ -89,6 +89,11 @@ class LotteryShow extends Component {
           <Grid.Row>
             <Grid.Column>
               <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
+                <Message
+                  error
+                  header="Oops!"
+                  content={this.state.errorMessage}
+                />
                 <Button
                   primary
                   loading={this.state.loading}
