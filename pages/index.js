@@ -30,20 +30,18 @@ class LotteryIndex extends Component {
   render() {
     return (
       <Layout>
-        <div>
-          <h3>Open Lotteries</h3>
-          <Link route="/lotteries/new">
-            <a href="">
-              <Button
-                content="Create Lottery"
-                icon="add circle"
-                primary
-                floated="right"
-              />
-            </a>
-          </Link>
-          {this.renderLotteries()}
-        </div>
+        <h3>Open Lotteries</h3>
+        <Link route="/lotteries/new">
+          <a href="">
+            <Button
+              content="Create Lottery"
+              icon="add circle"
+              primary
+              floated="right"
+            />
+          </a>
+        </Link>
+        {this.renderLotteries()}
       </Layout>
     );
   }
