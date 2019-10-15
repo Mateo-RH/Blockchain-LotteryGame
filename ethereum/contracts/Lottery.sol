@@ -64,3 +64,9 @@ contract Lottery {
         );
     }
 }
+
+// TODO: elegir ganador automaticamente, e informe en cuantos dias queda
+// TODO: quitar input en entrar
+// TODO: nombre en loteria
+// TODO: Refrescar cuando se valide una transaccion
+// TODO: Unirse en ether y no en wei
