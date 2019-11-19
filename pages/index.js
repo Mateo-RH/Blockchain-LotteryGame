@@ -10,6 +10,8 @@ class LotteryIndex extends Component {
     return { lotteries };
   }
 
+  // TODO: Ponerle el nombre a la app (Lottery chain)
+
   renderLotteries() {
     const items = this.props.lotteries.map(address => {
       return {
